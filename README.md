@@ -4,16 +4,17 @@ Run axe-core accessibility tests with Selenium
 
 ## Install
 
-pip install bla...
+	pip install https://github.com/ruslan-rv-ua/axe-core-test
 
 ## Quickstart
 
-	:::python
-	from axe_core_test import Axe
-	
-	axe_tester = Axe()
-	axe_raw_result = axe_tester('https://www.google.com')
-	print(axe_raw_result)
+```python
+from axe_core_test import Axe
+
+axe_tester = Axe()
+axe_raw_result = axe_tester('https://www.google.com')
+print(axe_raw_result)
+```
 
 
 ## Get default webdriver
