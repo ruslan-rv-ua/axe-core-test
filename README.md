@@ -4,7 +4,8 @@ Run axe-core accessibility tests with Selenium
 
 ## Install
 
-	pip install https://github.com/ruslan-rv-ua/axe-core-test
+	python -m pip install git+https://github.com/ruslan-rv-ua/axe-core-test.git@master
+	python -m pip install -e git+https://github.com/ruslan-rv-ua/axe-core-test@master#egg=axe_core_test
 
 ## Quickstart
 
