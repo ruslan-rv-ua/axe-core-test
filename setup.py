@@ -9,7 +9,7 @@ with open(readme_path, "r") as f:
 setup(
     name="axe-core-test",
     version="0.1",
-	description="axe-core testing with Selenium",
+	description="axe-core accessibility tests with Selenium",
 	long_description=long_description,
 	long_description_content_type="text/markdown",
 	
@@ -28,7 +28,7 @@ setup(
         "Operating System :: OS Independent",
     ],
     
-    url="TODO",   # project home page, if any
+    url="https://github.com/ruslan-rv-ua/axe-core-test", # project home page, if any
 	download_url="",
 	keywords="axe accessibility a11y selenium",
 	license="MIT", # A string specifying the license of the package.
