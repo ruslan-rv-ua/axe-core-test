@@ -19,28 +19,30 @@ print(axe_raw_result)
 
 ## Get default webdriver
 
-	:::python
-	from axe_core_test import Webdriver
-	
-	webdriver = Webdriver()
-	# ...
-	webdriver.quit()
-	#
-	# or use context manager
-	#
-	with Webdriver() as driver:
+```python
+from axe_core_test import Webdriver
+
+webdriver = Webdriver()
+# ...
+webdriver.quit()
+#
+# or use context manager
+#
+with Webdriver() as driver:
+```
 		# ...
 	
 ## Run test
 
-	:::python
-	from axe_core_test import Axe, Webdriver
-	
-	urls = ['https://www.google.com', 'github.com']
-	results = []
-	axe = Axe(context={}, options={})
-	with Webdriver() as webdriver:
-		for url in urls:
-			webdriver.get(url)
-			results.append(axe.run(webdriver))
+```python
+from axe_core_test import Axe, Webdriver
+
+urls = ['https://www.google.com', 'github.com']
+results = []
+axe = Axe(context={}, options={})
+with Webdriver() as webdriver:
+	for url in urls:
+		webdriver.get(url)
+		results.append(axe.run(webdriver))
+```
 
