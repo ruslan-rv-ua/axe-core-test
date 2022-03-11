@@ -1,4 +1,6 @@
-from .webdriver import WebDriver
+from .webdriver import Webdriver
+from pathlib import Path
+import logging
 
 _DEFAULT_SCRIPT_PATH = Path(__file__).parent
 _DEFAULT_SCRIPT_FILE = 'axe.min.js'
@@ -11,15 +13,15 @@ __all__ = ['Axe']
 class Axe:
     def __init__(self, *, script_path=_DEFAULT_SCRIPT, context=None, options=None, logger=None):
         '''
-                :param context: which page part(s) to analyze and/or what to exclude.
-                :param options: dictionary of aXe options.
+		:param context: which page part(s) to analyze and/or what to exclude.
+		:param options: dictionary of aXe options.
         '''
         self._script_path = script_path
         self._context = context
         self._options = options
         self._logger = logger or self._get_logger()
 
-        self._script = set._load_script()
+        self._script = self._load_script()
         self._axe_command = self._make_axe_command()
 
     def _get_logger(self):
@@ -35,7 +37,7 @@ class Axe:
     def _load_script(self):
         with open(self._script_path, 'r') as f:
             script = f.read()
-        self.logger.debug(f'Script loaded from: "{self._script_path}"')
+        self._logger.debug(f'Script loaded from: "{self._script_path}"')
         return script
 
     def _make_axe_command(self):
@@ -69,7 +71,7 @@ class Axe:
     def execute(self, webdriver):
         """Run axe against the current page.
         """
-        response = webdriver.execute_async_script(self._command)
+        response = webdriver.execute_async_script(self._axe_command)
         return response
 
     def run(self, webdriver):
@@ -81,7 +83,7 @@ class Axe:
 
     def __call__(self, url, webdriver=None):
         if webdriver is None:
-            with WebDriver() as webdriver:
+            with Webdriver() as webdriver:
                 webdriver.get(url)
                 axe_raw_result = self.run(webdriver)
         else:
